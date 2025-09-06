@@ -1,0 +1,21 @@
+{
+  "name": "ocr-project",
+  "version": "1.0.0",
+  "description": "OCR image processing with Node.js and EasyOCR",
+  "main": "parse-write-easy-OCR.mjs",
+  "scripts": {
+    "start": "node parse-write-easy-OCR.mjs"
+  },
+  "dependencies": {
+    "node-easyocr": "^1.0.0",
+    "fs-extra": "^11.3.0",
+    "jsep": "^0.4.0",
+    "glob": "^10.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Your Name",
+  "license": "Proprietary"
+}
+
