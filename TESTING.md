@@ -1,5 +1,7 @@
 # Testing Guide
 
+See [README.md](README.md) for project overview, architecture, and background.
+
 This document covers two ways to test the project: via Docker (recommended, no local setup needed) and locally (requires Python and Node.js).
 
 ---
@@ -65,8 +67,8 @@ Requires Node.js 18+ and Python 3.9. Dependency versions matter — see below.
 
 ### Prerequisites
 
-- Node.js 18+
-- Python 3.9 (not 3.10+, not system Python on macOS which may be 3.13)
+- [Node.js](https://nodejs.org) 18+
+- [Python 3.9](https://www.python.org/downloads/release/python-3919/) (not 3.10+, not system Python on macOS which may be 3.13)
 - A Python virtual environment
 
 ### Steps

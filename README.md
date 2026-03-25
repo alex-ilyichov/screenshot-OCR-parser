@@ -16,7 +16,7 @@ The fix sounds simple: run OCR across the image corpus and index the results. Ge
 
 ## Why Tesseract wasn't enough
 
-Tesseract is the default starting point for OCR. It's fast, well-documented, and has broad language support. For scanned documents with clean backgrounds and consistent fonts, it works well.
+[Tesseract](https://github.com/tesseract-ocr/tesseract) is the default starting point for OCR. It's fast, well-documented, and has broad language support. For scanned documents with clean backgrounds and consistent fonts, it works well.
 
 UI screenshots are a different problem. They contain mixed font sizes, icon labels, truncated strings, low-contrast text on colored backgrounds, and anti-aliased renders at non-standard resolutions. Tesseract's accuracy on this class of image was too low to be useful — it missed words, fragmented tokens, and produced noise that polluted the index.
 
@@ -26,7 +26,7 @@ The root cause is how Tesseract handles color. Its segmentation and layout analy
 
 ## Switching to EasyOCR
 
-EasyOCR uses a deep learning pipeline (CRAFT for text detection, CRNN for recognition) that handles the visual complexity of UI screenshots significantly better. The tradeoff is weight: the model files are large, initialization takes several seconds, and it requires PyTorch.
+[EasyOCR](https://github.com/JaidedAI/EasyOCR) uses a deep learning pipeline (CRAFT for text detection, CRNN for recognition) that handles the visual complexity of UI screenshots significantly better. The tradeoff is weight: the model files are large, initialization takes several seconds, and it requires [PyTorch](https://pytorch.org).
 
 That last point determined the architecture.
 
@@ -70,7 +70,7 @@ water | (salt & dough)
 !finance & account
 ```
 
-`&` is AND, `|` is OR, `!` is NOT. The parser (jsep) produces an AST; a recursive evaluator walks it against each image's word set. This gives exact, predictable results with no ranking or fuzzy matching — the right tradeoff for a documentation search tool where precision matters more than recall.
+`&` is AND, `|` is OR, `!` is NOT. The parser ([jsep](https://github.com/EricSmekens/jsep)) produces an AST; a recursive evaluator walks it against each image's word set. This gives exact, predictable results with no ranking or fuzzy matching — the right tradeoff for a documentation search tool where precision matters more than recall.
 
 ---
 
@@ -99,7 +99,7 @@ The model pre-bake step downloads EasyOCR's weights at image build time. The res
 
 ## Quick start
 
-**Docker (recommended)** — no local Python or Node.js required.
+**[Docker](https://docs.docker.com/get-docker/) (recommended)** — no local Python or Node.js required.
 
 ```bash
 git clone git@github.com:alex-ilyichov/screenshot-OCR-parser.git
@@ -119,7 +119,7 @@ docker cp ocr-run:/ocr-project/src/ocr_results.json ./ocr_results.json
 docker rm ocr-run
 ```
 
-**Local** — requires Node.js 18+, Python 3.9, and a virtual environment.
+**Local** — requires [Node.js](https://nodejs.org) 18+, Python 3.9, and a virtual environment.
 
 ```bash
 python3.9 -m venv myenv
@@ -164,6 +164,12 @@ Set `BASE_DIR` to point at your repo root. The crawler handles arbitrary nesting
 
 ---
 
+## Testing
+
+See [TESTING.md](TESTING.md) for full testing instructions, including Docker and local setup options, expected output, and known issues.
+
+---
+
 ## License
 
-See LICENSE.md.
+See [LICENSE.md](LICENSE.md).
