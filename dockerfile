@@ -25,7 +25,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Pre-download EasyOCR models so container works offline
-RUN python -c "import easyocr; easyocr.Reader(['en', 'fr'])"
+RUN python -c "import easyocr; easyocr.Reader(['en'])"
 
 # Copy project files (node_modules excluded via .dockerignore)
 COPY . .

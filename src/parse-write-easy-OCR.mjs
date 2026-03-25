@@ -37,7 +37,7 @@ class EasyOCR {
     }
 
     async init() {
-        await this.ocr.init(['en', 'fr']);
+        await this.ocr.init(['en']);
     }
 
     async readText(imagePath) {
